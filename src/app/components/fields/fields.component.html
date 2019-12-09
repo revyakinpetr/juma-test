@@ -1,0 +1,35 @@
+<h5>{{title}}</h5>
+
+<div class="btn-group mb-3" role="group" aria-label="Button group">
+  <button class="btn btn-outline-success" (click)="addItem()">Добавить</button>
+  <button class="btn btn-success" (click)="saveData()">Выгрузить</button>
+</div>
+
+<table class="table">
+  <tr>
+    <td *ngFor="let key of keys">
+      {{key}}
+    </td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr *ngFor="let item of data; let i = index">
+    <td *ngFor="let key of keys">
+      {{item[key]}}
+    </td>
+    <td>
+      <button (click)="editItem(i)" class="btn btn-sm btn-info">Редактировать</button>
+    </td>
+    <td>
+      <button (click)="deleteItem(i)" class="btn btn-sm btn-danger">Удалить</button>
+    </td>
+  </tr>
+</table>
+
+<app-popup *ngIf="popupShow"
+           [keys]="keys"
+           [(data)]="data"
+           [editIndex]="editIndex"
+           (loadNewItem)="newItemLoaded()">
+
+</app-popup>

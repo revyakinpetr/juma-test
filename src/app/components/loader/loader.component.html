@@ -1,0 +1,8 @@
+<form>
+  <div class="form-group">
+    <label for="userData"><h5>{{title}}</h5></label>
+    <textarea class="form-control" rows="4" id="userData" #newTextarea>{{data}}</textarea>
+    <p *ngIf="notValid" class="text-danger">Проверьте правильность введенных данных.</p>
+  </div>
+  <button class="btn btn-primary" (click)="loadText(newTextarea.value)">Продолжить</button>
+</form>
